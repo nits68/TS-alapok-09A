@@ -1,0 +1,20 @@
+export default function TeglalapPage() {
+  const a: number = 3;
+  const b: number = 4;
+  // Aritmetikai operátorok a JS/TS-ben
+  // - összeadás: +
+  // - kivonás: -
+  // - szorzás: *
+  // - osztás: /
+  const terület: number = a * b;
+  const kerület: number = 2 * (a + b);
+  return (
+    <div className="font-mono whitespace-pre">
+      <p>Téglalap kerülete és területe</p>
+      <p>a = {a}</p>
+      <p>b = {b}</p>
+      <p>T = {terület}</p>
+      <p>K = {kerület}</p>
+    </div>
+  );
+}
