@@ -20,7 +20,7 @@ export default async function PageWithSearchParams({
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-200">
       <div className="flex w-100 flex-col rounded-lg bg-white p-3 shadow-xl">
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col">
           <p className="text-xl text-center font-semibold">Téglalap területe és kerülete</p>
           <div>
             <label htmlFor="a">a = </label>
