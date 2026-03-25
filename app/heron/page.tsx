@@ -1,27 +1,30 @@
 type SearchParams = {
-  a?: string; // ? -> opcionális mezők, mert a query stringben nem biztos, hogy minden paraméter jelen lesz
+  a?: string;
   b?: string;
+  c?: string;
 };
-
-// A Next.js mindig két kulccsal adja át a paraméter objektumokat a page komponensednek:
-// params → a dinamikus útvonal szegmensek: app/teglalap/[id]/page.tsx
-// searchParams → a query stringből kinyert értékek: http://localhost:8080/teglalap?p1=5&p2=8
 
 export default async function PageWithSearchParams({
   searchParams,
 }: {
   searchParams: Promise<SearchParams>;
 }) {
-  const sps = await searchParams;
-  const a: number = Number(sps.a) || 3;
-  const b: number = Number(sps.b) || 4;
-  const terület =  a * b;
-  const kerület = 2 * (a + b);
+  const p = await searchParams;
+  const a: number = Number(p.a) || 3;
+  const b: number = Number(p.b) || 4;
+  const c: number = Number(p.c) || 5;
+
+  const szerkeszthető: boolean = a + b > c && a + c > b && b + c > a;
+
+  const kerület: number = a + b + c;
+  const s: number = kerület / 2;
+  const terület: number = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-200">
       <div className="flex w-100 flex-col rounded-lg bg-white p-3 shadow-xl">
         <form className="flex flex-col gap-4">
-          <p className="text-xl text-center font-semibold">Téglalap területe és kerülete</p>
+          <p className="text-center text-xl font-semibold">Háromszög területe és kerülete</p>
           <div>
             <label htmlFor="a">a = </label>
             <input
@@ -44,13 +47,28 @@ export default async function PageWithSearchParams({
               type="text"
             />
           </div>
+          <div>
+            <label htmlFor="c">c = </label>
+            <input
+              className="input input-primary"
+              defaultValue={c}
+              id="c"
+              name="c"
+              required
+              type="text"
+            />
+          </div>
           <div className="flex justify-center">
             <input className="btn btn-primary" type="submit" value="Számol" />
           </div>
-          <div className="flex justify-around">
-            <p>T = {terület.toFixed(3)}</p>
-            <p>K = {kerület.toFixed(3)}</p>
-          </div>
+          {szerkeszthető ? (
+            <div className="flex justify-around">
+              <p>T = {terület.toFixed(3)}</p>
+              <p>K = {kerület.toFixed(3)}</p>
+            </div>
+          ) : (
+            <div>Ezekkel az adatokkal nem lehet háromszöget szerkeszteni!</div>
+          )}
         </form>
       </div>
     </div>
