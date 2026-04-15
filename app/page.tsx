@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 // objektum típus:
 type LinkType = {
   href: string;
@@ -15,14 +17,21 @@ export const napok: string[] = ["Hétfő", "Kedd", "szerda"];
 const links: LinkType[] = [
   { href: "/alapok", label: "Alapok" },
   { href: "/heron", label: "Háromszög K-T by Heron" },
-  { href: "/teglalap", label: "Téhlalap K-T" },
+  { href: "/teglalap", label: "Téglalap K-T" },
 ];
 
 export default function AlapokPage() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-200">
       <div className="flex w-80 flex-col items-center rounded-lg bg-white p-5 shadow-xl">
-        <p>alma</p>
+        <h1 className="text-xl font-semibold">TypeScript alapok - 09.A</h1>
+        <ul className="mt-3 list-inside list-disc">
+          {links.map((link, index) => (
+            <Link className="text-blue-500 hover:underline" href={link.href} key={index}>
+              <li>{link.label}</li>
+            </Link>
+          ))}
+        </ul>
       </div>
     </div>
   );
