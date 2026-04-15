@@ -8,10 +8,10 @@ type LinkType = {
   label: string;
 };
 
-export const pi: number = 3.14;
+// export const pi: number = 3.14;
 
 // string típusú tömb:
-export const napok: string[] = ["Hétfő", "Kedd", "szerda"];
+// export const napok: string[] = ["Hétfő", "Kedd", "szerda"];
 
 // Saját objektum típusú tömb
 const links: LinkType[] = [
