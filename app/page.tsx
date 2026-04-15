@@ -1,34 +1,29 @@
-export default function TSalapokPage() {
-  // Megjegyzés
-  // JS/TS Egyszerű változótípusai
-  // - szöveges típus (string)
-  // - numerikus típus (number)
-  // - logikai típus (boolean)
+"use client";
 
-  // egyszerű változók definiálása
-  // [const, let, var] változó_azonosítója: változó_típusa = kezdőérték
-  // const - Ha a változó értéke a program futása alatt nem változik
-  // let - Ha a változó értéke a program futása alatt változik
-  // var - Elvileg a var is használható, de a linterek elavúlt scope-ja végett tíltják
+// objektum típus:
+type LinkType = {
+  href: string;
+  label: string;
+};
 
-  const szöveg: string = "Alma"; // "Alma" string literál
-  const szöveg2: string = 'Körte "pálinka" ital';
-  let a: number = 3;
-  const b: number = 4 * a;
-  a = 5;
-  const valós: number = 3.14;
-  const szöveg3: string = `${a} * ${b} = ${a * b}`; // template string literál
-  const logikai1: boolean = true; // vagy false
-  const logikai2: boolean = a > b;
+export const pi: number = 3.14;
 
+// string típusú tömb:
+export const napok: string[] = ["Hétfő", "Kedd", "szerda"];
+
+// Saját objektum típusú tömb
+const links: LinkType[] = [
+  { href: "/alapok", label: "Alapok" },
+  { href: "/heron", label: "Háromszög K-T by Heron" },
+  { href: "/teglalap", label: "Téhlalap K-T" },
+];
+
+export default function AlapokPage() {
   return (
-    <div>
-      <p>{szöveg}</p>
-      <p>{szöveg2}</p>
-      <p>{szöveg3}</p>
-      <p>Pi: {valós}</p>
-      <p>{logikai1 ? "true" : "false"}</p>
-      <p>{logikai2 ? "true" : "false"}</p>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-200">
+      <div className="flex w-80 flex-col items-center rounded-lg bg-white p-5 shadow-xl">
+        <p>alma</p>
+      </div>
     </div>
   );
 }

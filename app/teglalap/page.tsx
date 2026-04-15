@@ -7,11 +7,7 @@ type SearchParams = {
 // params → a dinamikus útvonal szegmensek: app/teglalap/[id]/page.tsx
 // searchParams → a query stringből kinyert értékek: http://localhost:8080/teglalap?p1=5&p2=8
 
-export default async function PageWithSearchParams({
-  searchParams,
-}: {
-  searchParams: Promise<SearchParams>;
-}) {
+export default async function PageWithSearchParams({searchParams}: {searchParams: Promise<SearchParams>;}) {
   const sps = await searchParams;
   const a: number = Number(sps.a) || 3;
   const b: number = Number(sps.b) || 4;
