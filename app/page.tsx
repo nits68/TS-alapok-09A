@@ -18,6 +18,8 @@ const links: LinkType[] = [
   { href: "/alapok", label: "Alapok" },
   { href: "/heron", label: "Háromszög K-T by Heron" },
   { href: "/teglalap", label: "Téglalap K-T" },
+  { href: "/lnko-kivonasos", label: "LNKO Kivonásos" },
+  { href: "/lnko-euklidesz", label: "LNKO Euklidesz" },
 ];
 
 export default function AlapokPage() {
